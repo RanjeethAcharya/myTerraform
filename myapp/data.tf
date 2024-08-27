@@ -1,3 +1,5 @@
+data "aws_availability_zones" "available" {}
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -14,11 +16,12 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "web" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
+data "aws_ami" "amazon_linux_23" {
+  most_recent = true
+  owners      = ["amazon"]
 
-  tags = {
-    Name = "HelloWorld"
+  filter {
+    name   = "name"
+    values = ["al2023-ami-2023*-x86_64"]
   }
 }
