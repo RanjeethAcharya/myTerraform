@@ -29,6 +29,11 @@ output "ec2_complete_private_dns" {
   value       = module.ec2_complete.private_dns
 }
 
+output "ec2_complete_private_ip" {
+  description = "The private ip assigned to the instance."
+  value       = module.ec2_complete.private_ip
+}
+
 output "ec2_complete_public_dns" {
   description = "The public DNS name assigned to the instance. For EC2-VPC, this is only available if you've enabled DNS hostnames for your VPC"
   value       = module.ec2_complete.public_dns
